@@ -8,11 +8,12 @@ function App() {
       <header>
         <Header />
       </header>
-      <body>
-        <section>
-          <h1>Kittens that melt your heart</h1>
-        </section>
-      </body>
+      <main className="App-main">
+        <h1 className="App-text">Kittens that melt your heart</h1>
+        <a href="/" className="App-button">
+          Go ahead
+        </a>
+      </main>
     </>
   );
 }

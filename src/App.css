@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.App-main {
+  background-image: url(../public/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding-top: 40px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App-text {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.App-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #f8f4e3;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.App-button:hover {
+  background-color: #b7b2aa;
+}

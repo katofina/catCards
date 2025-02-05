@@ -1,0 +1,42 @@
+.Header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  width: 100%;
+  background-color: #d8d0c3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.Header-title {
+  padding: 10px;
+  font-size: 24px;
+}
+
+.Header-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header-buttons {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #f8f4e3;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.Header-buttons:hover {
+  background-color: #b7b2aa;
+  transform: scale(1.05);
+}
