@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es5",
+    "removeComments": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "lib": ["es6", "dom"],
+    "module": "commonJS",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
