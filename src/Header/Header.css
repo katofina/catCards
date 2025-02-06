@@ -1,42 +1,58 @@
 .Header {
   display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid black;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
   width: 100%;
-  background-color: #d8d0c3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #e0d9c8, #d8d0c3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   position: relative;
+  height: 80px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .Header-title {
   padding: 10px;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+}
+
+.Header-title-ref {
+  text-decoration: none;
+  color: inherit;
 }
 
 .Header-button-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
 }
 
 .Header-buttons {
-  margin: 10px;
   text-decoration: none;
-  color: black;
+  color: #333;
   font-weight: bold;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 2px solid #f8f4e3;
+  border-radius: 25px;
   background-color: #f8f4e3;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
   text-align: center;
   transition:
     background-color 0.3s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
 }
 
 .Header-buttons:hover {
   background-color: #b7b2aa;
   transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Header-buttons:active {
+  background-color: #d9d4b7;
+  transform: scale(0.98);
 }

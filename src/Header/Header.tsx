@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div className="Header">
       <div className="Header-title">
-        <h1 style={{ margin: 0 }}>CatCards</h1>
+        <a className="Header-title-ref" href="/"><h1>CatCards</h1></a>
       </div>
 
       <div className="Header-button-container">
