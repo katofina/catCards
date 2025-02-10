@@ -1,6 +1,7 @@
 import React from "react";
 import { CatInfo } from "./types/types";
 import "./OneCard.css";
+import { Link } from "react-router";
 
 interface Props {
   data: CatInfo;
@@ -21,10 +22,10 @@ export default function OneCard({ data }: Props) {
       <img className="OC-img" src={data.url} alt="" id={data.id}/>
       <div className="OC-info">
         <p className={isCategory ? "OC-known": "OC-unknown"}>
-          Category: {isCategory ? data.categories[0].name : "unknown"}
+          Category: {isCategory ? <Link to={`/catcards/category_ids=${data.categories[0].id}`} color="green">{data.categories[0].name}</Link>: "unknown"}
         </p>
         <p className={isBreed ? "OC-known": "OC-unknown"}>
-          Breed: {isBreed ? data.breeds[0].name : "unknown"}
+          Breed: {isBreed ? <Link to={`/catcards/breed_ids=${data.breeds[0].id}`} color="green">{data.breeds[0].name}</Link> : "unknown"}
         </p>
       </div>
     </div>

@@ -14,6 +14,6 @@ export type BreedInfo = {
 export type CatInfo = {
     url: string;
     id: string;
-    categories: Array<{ name: string }>
+    categories: Array<{ name: string, id: string }>
     breeds: Array<BreedInfo>
 };

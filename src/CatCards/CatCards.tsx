@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CatCards.css";
 import OneCard from "./OneCard/OneCard";
+import { useParams } from "react-router";
 
 export const API_KEY =
   "live_Q7eypd6MW81skStdAEfxcQ38QkgvudsuucUJkozHuGTJ1Lr0n2ERBqRkTWpvEcZg";
@@ -10,16 +11,25 @@ export default function CatCards() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoad, setIsLoad] = useState(true);
+  const { id } = useParams();
+
+  const [url, setUrl] = useState(URL);
 
   useEffect(() => {
-    fetch(URL, { method: "GET", headers: { "x-api-key": API_KEY } })
+    fetch(url, { method: "GET", headers: { "x-api-key": API_KEY } })
       .then((response) => {
         if (!response.ok) setError(`Ошибка HTTP: ${response.status}`);
         setIsLoad(false);
         return response.json();
       })
-      .then((data) => setData(data));
-  }, []);
+      .then((data) => { setData(data) });
+  }, [url]);
+
+  useEffect(() => {
+    if (id) {
+      setUrl(`${URL}&${id}`);
+    };
+  }, [id]);
 
   return (
     <div className="CC-container">
