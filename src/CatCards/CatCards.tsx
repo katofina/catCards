@@ -2,15 +2,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./CatCards.css";
 import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
-
-export const API_KEY =
-  "live_Q7eypd6MW81skStdAEfxcQ38QkgvudsuucUJkozHuGTJ1Lr0n2ERBqRkTWpvEcZg";
-const BASE_URL = "https://api.thecatapi.com/v1/images/search?&limit=15";
+import { API_KEY, BASE_URL } from "./constants/constant";
 
 export default function CatCards() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoad, setIsLoad] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [url, setUrl] = useState(BASE_URL);
   const { id } = useParams();
 
@@ -32,6 +30,8 @@ export default function CatCards() {
         const filteredData = Array.from(
           new Map(combined.map((item) => [item.id, item])).values(),
         );
+        console.log(filteredData.length, prev.length);
+        (filteredData.length === prev.length) && setIsDisabled(true);
         return filteredData;
       });
     } catch (err) {
@@ -43,7 +43,7 @@ export default function CatCards() {
 
   useEffect(() => {
     loadData();
-  }, [url, loadData]);
+  }, [url]);
 
   useEffect(() => {
     if (id) {
@@ -55,8 +55,6 @@ export default function CatCards() {
   return (
     <div className="CC-container">
       <h1 className="CC-title">Cat Cards:</h1>
-      {isLoad && <h1>Loading...</h1>}
-      {error && <h1>{error}</h1>}
       {!!data.length && (
         <>
           <div className="CC-cats">
@@ -64,11 +62,15 @@ export default function CatCards() {
               <OneCard key={item.id} data={item} />
             ))}
           </div>
-          <button className="СС-button" onClick={loadData}>
+          <button className="СС-button" disabled={isDisabled} onClick={loadData}>
             Load more
           </button>
         </>
       )}
+      <div className={`CC-extra ${isLoad && 'loading'}`}>
+        {error && <h1 className="error">{error}</h1>}
+        {isLoad && !error && <h1>Loading...</h1>}
+      </div>
     </div>
   );
 }
