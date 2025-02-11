@@ -25,13 +25,15 @@ export default function CatCards() {
       !response.ok && setError(`Error of HTTP: ${response.status}`);
 
       const newData = await response.json();
+
       setData((prev) => {
         const combined = [...prev, ...newData];
+
         const filteredData = Array.from(
           new Map(combined.map((item) => [item.id, item])).values(),
         );
-        console.log(filteredData.length, prev.length);
-        (filteredData.length === prev.length) && setIsDisabled(true);
+
+        filteredData.length === prev.length && setIsDisabled(true);
         return filteredData;
       });
     } catch (err) {
@@ -62,12 +64,16 @@ export default function CatCards() {
               <OneCard key={item.id} data={item} />
             ))}
           </div>
-          <button className="СС-button" disabled={isDisabled} onClick={loadData}>
+          <button
+            className="СС-button"
+            disabled={isDisabled}
+            onClick={loadData}
+          >
             Load more
           </button>
         </>
       )}
-      <div className={`CC-extra ${isLoad && 'loading'}`}>
+      <div className={`CC-extra ${isLoad && "loading"}`}>
         {error && <h1 className="error">{error}</h1>}
         {isLoad && !error && <h1>Loading...</h1>}
       </div>

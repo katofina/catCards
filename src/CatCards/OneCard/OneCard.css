@@ -72,6 +72,7 @@
   fill: rgba(74, 124, 89, 0.8);
   transition: transform 0.3s ease, fill 0.3s ease;
   opacity: 0.7;
+  cursor: pointer;
 }
 
 .OC-ico-container:hover .OC-ico {
@@ -82,4 +83,17 @@
 
 a {
   color: #4a7c59;
+}
+
+.OC-learn {
+  width: 30px;
+  height: 30px;
+  fill: rgba(74, 124, 89, 0.8);
+  transition: opacity 0.3s ease, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.OC-learn:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }

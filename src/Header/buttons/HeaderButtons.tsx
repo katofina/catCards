@@ -1,7 +1,7 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
-import Modal from "../../Auth/Modal/Modal";
+import Modal from "../../Modal/Modal";
 import SignIn from "../../Auth/SignIn";
 import SignUp from "../../Auth/SignUp";
 import "./HeaderButtons.css";
