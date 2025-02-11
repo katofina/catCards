@@ -19,3 +19,30 @@
   gap: 20px;
   padding: 40px 100px;
 }
+
+.СС-button {
+  background-color: #f8f4e3;
+  color: #333;
+  font-size: 18px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 10px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.СС-button:hover {
+  background-color: #e0d9c8;
+  transform: translateY(-5px);
+}
+
+.СС-button:focus {
+  outline: none;
+}
+
+.СС-button:active {
+  transform: translateY(2px);
+}
