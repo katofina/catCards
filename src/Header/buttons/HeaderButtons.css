@@ -1,0 +1,34 @@
+.HB-container {
+  display: flex;
+  gap: 20px;
+}
+
+.HB-button {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 2px solid #f8f4e3;
+  border-radius: 25px;
+  background-color: #f8f4e3;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.HB-button:hover {
+  background-color: #b7b2aa;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.HB-button:active {
+  background-color: #d9d4b7;
+  transform: scale(0.98);
+}
