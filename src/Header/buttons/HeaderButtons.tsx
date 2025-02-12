@@ -11,7 +11,7 @@ import { getModalContent } from "../../Modal/getModalContent";
 import { useNavigate } from "react-router";
 
 export default function HeaderButtons() {
-  const { user } = useUserContext();
+  const { user, isLoading } = useUserContext();
 
   const [modalType, setModalType] = useState<ModalType | null>(null);
   const closeModal = () => setModalType(null);
@@ -21,6 +21,8 @@ export default function HeaderButtons() {
   const navigateToProfile = () => navigate("/profile");
 
   const logOut = () => signOut(auth);
+
+  if (isLoading) return;
 
   return (
     <div className="HB-container">
