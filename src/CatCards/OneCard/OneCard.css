@@ -81,6 +81,17 @@
   opacity: 1;
 }
 
+.OC-ico:not(.favorited) {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.OC-ico.favorited {
+  filter: none;
+  fill: black;
+  opacity: 1;
+}
+
 a {
   color: #4a7c59;
 }

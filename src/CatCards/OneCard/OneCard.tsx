@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CatInfo, ModalType } from "../../types/types";
 import "./OneCard.css";
 import { Link } from "react-router";
@@ -6,7 +6,7 @@ import Modal from "../../Modal/Modal";
 import { useUserContext } from "../../Context/useUserContext";
 import { MODAL_PROPS } from "../../constants/constant";
 import { getModalContent } from "../../Modal/getModalContent";
-import { ref, set, update } from "firebase/database";
+import { get, ref, remove, set } from "firebase/database";
 import { db } from "../../firebase/firebase";
 
 interface Props {
@@ -15,19 +15,34 @@ interface Props {
 
 export default function OneCard({ data }: Props) {
   const hasCategory = !!data.categories;
-  const hasBreed = !!data.breeds.length;
+  const hasBreed = data.breeds && data.breeds.length;
 
   const [modalType, setModalType] = useState<ModalType | null>(null);
   const closeModal = () => setModalType(null);
   const openModal = (type: ModalType) => setModalType(type);
 
   const { user } = useUserContext();
+  const userFavouriteRef = user
+    ? ref(db, `${user.email.split("@")[0]}/${data.id}`)
+    : null;
+
+  const [isFavorited, setIsFavorited] = useState(false);
+  useEffect(() => {
+    if (userFavouriteRef) {
+      get(userFavouriteRef).then((snap) => {
+        if (snap.exists()) setIsFavorited(true);
+        else setIsFavorited(false);
+      });
+    }
+  }, [userFavouriteRef]);
 
   function handleSave() {
     if (user) {
-      update(ref(db, `${user.email.split('@')[0]}/`), {[data.id]: data});
-    }
-    else openModal(MODAL_PROPS.LOGIN);
+      if (isFavorited) {
+        remove(userFavouriteRef);
+      } else set(userFavouriteRef, data);
+      setIsFavorited(!isFavorited);
+    } else openModal(MODAL_PROPS.LOGIN);
   }
 
   return (
@@ -40,7 +55,11 @@ export default function OneCard({ data }: Props) {
         className="OC-ico-container"
         onClick={handleSave}
       >
-        <img src="/save.svg" className="OC-ico" alt="download" />
+        <img
+          src="/save.svg"
+          className={`OC-ico ${isFavorited ? "favorited" : ""}`}
+          alt="download"
+        />
       </div>
 
       <img className="OC-img" src={data.url} alt="" id={data.id} />
@@ -84,7 +103,11 @@ export default function OneCard({ data }: Props) {
       </div>
 
       <Modal isOpen={!!modalType} onClose={closeModal}>
-        {modalType === MODAL_PROPS.LOGIN && (<p className="OC-errorLog">To add to favorites, you need to log in.</p>)}
+        {modalType === MODAL_PROPS.LOGIN && (
+          <p className="OC-errorLog">
+            To add to favorites, you need to log in.
+          </p>
+        )}
         {modalType && getModalContent(modalType, closeModal, data.breeds[0])}
       </Modal>
     </div>

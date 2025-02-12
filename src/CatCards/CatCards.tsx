@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CatCards.css";
 import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
