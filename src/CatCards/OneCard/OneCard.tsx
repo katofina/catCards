@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { CatInfo } from "./types/types";
+import React, { useState } from "react";
+import { CatInfo, ModalType } from "../../types/types";
 import "./OneCard.css";
 import { Link } from "react-router";
 import Modal from "../../Modal/Modal";
-import BreedCard from "./BreedInfo/BreedCard";
+import { useUserContext } from "../../Context/useUserContext";
+import { MODAL_PROPS } from "../../constants/constant";
+import { getModalContent } from "../../Modal/getModalContent";
 
 interface Props {
   data: CatInfo;
@@ -13,16 +15,27 @@ export default function OneCard({ data }: Props) {
   const hasCategory = !!data.categories;
   const hasBreed = !!data.breeds.length;
 
-  const [isModal, setIsModal] = useState(false);
-  const openModal = useCallback(() => setIsModal(true), []);
-  const closeModal = useCallback(() => setIsModal(false), []);
+  const [modalType, setModalType] = useState<ModalType | null>(null);
+  const closeModal = () => setModalType(null);
+  const openModal = (type: ModalType) => setModalType(type);
+
+  const { user } = useUserContext();
+
+  function handleSave() {
+    if (user) console.log("dkfj");
+    else openModal(MODAL_PROPS.LOGIN);
+  }
 
   return (
     <div className="OC-card">
       <div style={{ left: 15 }} className="OC-ico-container">
         <img src="/download.svg" className="OC-ico" alt="download" />
       </div>
-      <div style={{ right: 15 }} className="OC-ico-container">
+      <div
+        style={{ right: 15 }}
+        className="OC-ico-container"
+        onClick={handleSave}
+      >
         <img src="/save.svg" className="OC-ico" alt="download" />
       </div>
 
@@ -53,7 +66,12 @@ export default function OneCard({ data }: Props) {
               >
                 {data.breeds[0].name}
               </Link>
-              <img src="/learn.svg" alt="learn" className="OC-learn" onClick={openModal}/>
+              <img
+                src="/learn.svg"
+                alt="learn"
+                className="OC-learn"
+                onClick={() => openModal(MODAL_PROPS.BREED)}
+              />
             </>
           ) : (
             "unknown"
@@ -61,8 +79,9 @@ export default function OneCard({ data }: Props) {
         </p>
       </div>
 
-      <Modal isOpen={isModal} onClose={closeModal}>
-        <BreedCard data={data.breeds[0]}/>
+      <Modal isOpen={!!modalType} onClose={closeModal}>
+        {modalType === MODAL_PROPS.LOGIN && (<p className="OC-errorLog">To add to favorites, you need to log in.</p>)}
+        {modalType && getModalContent(modalType, closeModal, data.breeds[0])}
       </Modal>
     </div>
   );

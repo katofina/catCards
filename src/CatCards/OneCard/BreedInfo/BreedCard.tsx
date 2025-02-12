@@ -1,7 +1,7 @@
-import { BreedInfo } from "../types/types";
+import { BreedInfo } from "../../../types/types";
 import "./BreedCard.css";
 import React from "react";
-import { BREED_PROPS } from "../../constants/constant";
+import { BREED_PROPS } from "../../../constants/constant";
 
 interface Props {
   data: BreedInfo;

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./CatCards.css";
 import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
-import { API_KEY, BASE_URL } from "./constants/constant";
+import { API_KEY, BASE_URL } from "../constants/constant";
 
 export default function CatCards() {
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ export default function CatCards() {
   const [url, setUrl] = useState(BASE_URL);
   const { id } = useParams();
 
-  const loadData = useCallback(async () => {
+  const loadData = async () => {
     setIsLoad(true);
     setError(null);
 
@@ -41,7 +41,7 @@ export default function CatCards() {
     } finally {
       setIsLoad(false);
     }
-  }, [url]);
+  };
 
   useEffect(() => {
     loadData();

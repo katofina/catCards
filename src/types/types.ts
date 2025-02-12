@@ -1,3 +1,5 @@
+import { MODAL_PROPS } from "../constants/constant";
+
 export type BreedInfo = {
     id: string,
     name: string,
@@ -17,3 +19,9 @@ export type CatInfo = {
     categories: Array<{ name: string, id: string }>
     breeds: Array<BreedInfo>
 };
+
+export type User = {
+    email: string;
+};
+
+export type ModalType = keyof typeof MODAL_PROPS;

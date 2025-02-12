@@ -1,31 +1,22 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
+import React, { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import Modal from "../../Modal/Modal";
-import SignIn from "../../Auth/SignIn";
-import SignUp from "../../Auth/SignUp";
 import "./HeaderButtons.css";
+import { useUserContext } from "../../Context/useUserContext";
+import { AuthButton } from "./AuthButton";
+import { MODAL_PROPS } from "../../constants/constant";
+import { ModalType } from "../../types/types";
+import { getModalContent } from "../../Modal/getModalContent";
 
 export default function HeaderButtons() {
-  const [modalType, setModalType] = useState(null);
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { user } = useUserContext();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currUser) => {
-      setUser(currUser);
-      setLoading(false);
-    }
-    );
-
-    return () => unsubscribe();
-  }, []);
-
+  const [modalType, setModalType] = useState<ModalType | null>(null);
   const closeModal = () => setModalType(null);
-  const openModal = (type: string) => setModalType(type);
-  const logOut = () => signOut(auth);
+  const openModal = (type: ModalType) => setModalType(type);
 
-  if (loading) return null;
+  const logOut = () => signOut(auth);
 
   return (
     <div className="HB-container">
@@ -38,23 +29,18 @@ export default function HeaderButtons() {
         </>
       ) : (
         <>
-          <button className="HB-button" onClick={() => openModal("login")}>
-            Sign In
-          </button>
-          <button
-            className="HB-button"
-            onClick={() => openModal("register")}
-          >
-            Sign Up
-          </button>
+          <AuthButton
+            onClick={() => openModal(MODAL_PROPS.LOGIN)}
+            text="Sign In"
+          />
+          <AuthButton
+            onClick={() => openModal(MODAL_PROPS.REGISTER)}
+            text="Sign Up"
+          />
         </>
       )}
       <Modal isOpen={!!modalType} onClose={closeModal}>
-        {modalType === "login" ? (
-          <SignIn close={closeModal} />
-        ) : (
-          <SignUp close={closeModal} />
-        )}
+        {modalType && getModalContent(modalType, closeModal)}
       </Modal>
     </div>
   );
