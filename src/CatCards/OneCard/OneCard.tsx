@@ -6,6 +6,8 @@ import Modal from "../../Modal/Modal";
 import { useUserContext } from "../../Context/useUserContext";
 import { MODAL_PROPS } from "../../constants/constant";
 import { getModalContent } from "../../Modal/getModalContent";
+import { ref, set, update } from "firebase/database";
+import { db } from "../../firebase/firebase";
 
 interface Props {
   data: CatInfo;
@@ -22,7 +24,9 @@ export default function OneCard({ data }: Props) {
   const { user } = useUserContext();
 
   function handleSave() {
-    if (user) console.log("dkfj");
+    if (user) {
+      update(ref(db, `${user.email.split('@')[0]}/`), {[data.id]: data});
+    }
     else openModal(MODAL_PROPS.LOGIN);
   }
 

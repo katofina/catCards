@@ -22,10 +22,8 @@ export default function HeaderButtons() {
     <div className="HB-container">
       {user ? (
         <>
-          <button className="HB-button">Profile</button>
-          <button className="HB-button" onClick={logOut}>
-            Sign Out
-          </button>
+          <AuthButton onClick={() => openModal(MODAL_PROPS.LOGIN)} text="Profile" />
+          <AuthButton onClick={logOut} text="Sign Out"/>
         </>
       ) : (
         <>
