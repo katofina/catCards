@@ -5,6 +5,8 @@ export const API_KEY =
 
 export const BASE_URL = "https://api.thecatapi.com/v1/images/search?&limit=15";
 
+export const BREEDS_URL = "https://api.thecatapi.com/v1/breeds";
+
 export const BREED_PROPS: (keyof BreedInfo)[] = ["name", "temperament", "description", "origin",
     "life_span", "child_friendly", "dog_friendly", "energy_level", "hypoallergenic"];
 

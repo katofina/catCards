@@ -3,6 +3,7 @@ import "./CatCards.css";
 import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
 import { API_KEY, BASE_URL } from "../constants/constant";
+import Search from "./Search/Search";
 
 export default function CatCards() {
   const [data, setData] = useState([]);
@@ -56,7 +57,9 @@ export default function CatCards() {
 
   return (
     <div className="CC-container">
-      <h1 className="CC-title">Cat Cards:</h1>
+      <div className="CC-title">
+        <Search/>
+      </div>
       {!!data.length && (
         <>
           <div className="CC-cats">

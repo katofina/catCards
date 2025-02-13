@@ -5,12 +5,10 @@
 }
 
 .CC-title {
-  color: #333;
   padding: 20px;
-  text-align: center;
-  font-size: 28px;
   margin: 0;
   border-bottom: 1px solid black;
+  position: relative;
 }
 
 .CC-cats {
