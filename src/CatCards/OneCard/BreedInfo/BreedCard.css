@@ -1,37 +1,44 @@
 .BC-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  background-color: white;
+  padding: 20px;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .BC-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .BC-row p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
+  margin: 0;
+  font-size: 14px;
+  color: #333;
 }
 
 .BC-property {
-    color: #007BFF;
-    font-weight: bold;
+  color: #007bff;
+  font-weight: bold;
 }
 
-.BC-description{
-    font-weight: 500;
-    color: #555;
-    width: 250px;
-    text-align: justify;
-    padding: 0 10px;
+.BC-description {
+  font-weight: 500;
+  color: #555;
+  width: 250px;
+  text-align: justify;
+  padding: 0 10px;
+}
+
+@media (max-width: 576px) {
+  .BC-container {
+    padding: 5px;
+    gap: 5px;
+  }
 }

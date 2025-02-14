@@ -34,7 +34,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.3 ease, opacity 0.2s ease;
+  transition:
+    transform 0.3 ease,
+    opacity 0.2s ease;
 }
 
 .Modal-close img {
@@ -42,10 +44,19 @@
   height: 100%;
   filter: invert(40%) sepia(30%) saturate(500%);
   opacity: 0.8;
-  transition: opacity 0.3s ease, transform 0.2s ease-in-out;
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s ease-in-out;
 }
 
 .Modal-close:hover img {
   opacity: 1;
   transform: scale(1.1);
+}
+
+@media (max-width: 576px) {
+  .Modal-content {
+    min-width: 300px;
+    padding: 12px;
+  }
 }

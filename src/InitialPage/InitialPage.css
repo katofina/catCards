@@ -34,11 +34,19 @@
   font-weight: 600;
   text-decoration: none;
   border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
   color: black;
 }
 
 .IP-button:hover {
   background-color: #ff6347;
   transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+  .IP-text {
+    margin: 20px;
+  }
 }
