@@ -1,11 +1,13 @@
+@import "../../constants/constants.scss";
+
 .AuthButton {
   text-decoration: none;
-  color: #333;
+  color: $second-text-color;
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  border: 2px solid #f8f4e3;
+  border: 2px solid $white-less-color;
   border-radius: 25px;
-  background-color: #f8f4e3;
+  background-color: $white-less-color;
   display: inline-block;
   padding: 12px 24px;
   font-size: 16px;
@@ -15,17 +17,16 @@
     background-color 0.3s ease,
     transform 0.2s ease,
     box-shadow 0.3s ease;
-}
 
-.AuthButton:hover {
-  background-color: #b7b2aa;
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.AuthButton:active {
-  background-color: #d9d4b7;
-  transform: scale(0.98);
+  &:hover {
+    background-color: #b7b2aa;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  &:active {
+    background-color: #d9d4b7;
+    transform: scale(0.98);
+  }
 }
 
 @media (max-width: 576px) {

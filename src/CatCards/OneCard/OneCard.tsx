@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CatInfo, ModalType } from "../../types/types";
-import "./OneCard.css";
+import "./OneCard.scss";
 import { Link } from "react-router";
 import Modal from "../../Modal/Modal";
 import { useUserContext } from "../../Context/useUserContext";

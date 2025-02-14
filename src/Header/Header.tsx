@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./Header.scss";
 import HeaderButtons from "./buttons/HeaderButtons";
 
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
         </a>
       </div>
 
-      <HeaderButtons/>
+      <HeaderButtons />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./Sign.css";
+import "./Sign.scss";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router";
@@ -14,7 +14,7 @@ interface Prop {
   close: () => void;
 }
 
-export default function SignUp({close}: Prop) {
+export default function SignUp({ close }: Prop) {
   const {
     register,
     handleSubmit,
@@ -27,7 +27,10 @@ export default function SignUp({close}: Prop) {
 
   const onSubmit = (data: FormData) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => { close(); navigate("/"); })
+      .then(() => {
+        close();
+        navigate("/");
+      })
       .catch((err) => setFbError(err.message));
   };
 

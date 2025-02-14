@@ -1,0 +1,55 @@
+@import "../../constants/constants.scss";
+
+$commonPaddings: 40px;
+$topmargin: calc(100% - $commonPaddings);
+
+.Search-input {
+  padding: 10px;
+  border: 1px solid $white-grey-color;
+  border-radius: 5px;
+  width: 100%;
+  font-size: $font-size-min;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $focus-input-color;
+    outline: none;
+  }
+}
+
+.Search-breeds {
+  position: absolute;
+  top: $topmargin;
+  left: 15px;
+  right: 15px;
+  list-style-type: none;
+  padding: 10px 0;
+  background-color: $white-color;
+  border: 1px solid $main-border-color;
+  border-radius: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid $main-list-color;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    &:active {
+      background-color: $main-list-color;
+    }
+    &:focus {
+      outline: none;
+      background-color: $main-list-color;
+    }
+  }
+}

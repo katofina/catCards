@@ -1,3 +1,5 @@
+@import "../../../constants/constants.scss";
+
 .BC-container {
   background-color: white;
   padding: 20px;
@@ -8,29 +10,27 @@
 }
 
 .BC-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexBetween();
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid $main-border-color;
   border-radius: 8px;
-  background-color: #f9f9f9;
-}
+  background-color: $white-color;
 
-.BC-row p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
+  p {
+    margin: 0;
+    font-size: $font-size-min;
+    color: $second-text-color;
+  }
 }
 
 .BC-property {
-  color: #007bff;
+  color: $blue-color;
   font-weight: bold;
 }
 
 .BC-description {
-  font-weight: 500;
-  color: #555;
+  font-weight: $font-weight-medium;
+  color: $main-text-color;
   width: 250px;
   text-align: justify;
   padding: 0 10px;

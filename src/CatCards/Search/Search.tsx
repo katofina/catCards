@@ -3,7 +3,7 @@ import { API_KEY, BREEDS_URL } from "../../constants/constant";
 import { BreedInfo } from "../../types/types";
 import { useNavigate } from "react-router";
 import React from "react";
-import "./Search.css";
+import "./Search.scss";
 
 export default function Search() {
   const [searchString, setSearchString] = useState("");

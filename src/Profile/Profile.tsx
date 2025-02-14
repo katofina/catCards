@@ -3,7 +3,7 @@ import { db } from "../firebase/firebase";
 import React, { useEffect, useRef, useState } from "react";
 import { useUserContext } from "../Context/useUserContext";
 import { CatInfo } from "../types/types";
-import "./Profile.css";
+import "./Profile.scss";
 import OneCard from "../CatCards/OneCard/OneCard";
 
 export default function Profile() {

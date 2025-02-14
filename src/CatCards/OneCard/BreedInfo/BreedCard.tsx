@@ -1,5 +1,5 @@
 import { BreedInfo } from "../../../types/types";
-import "./BreedCard.css";
+import "./BreedCard.scss";
 import React from "react";
 import { BREED_PROPS } from "../../../constants/constant";
 
@@ -11,7 +11,10 @@ export default function BreedCard({ data }: Props) {
   return (
     <div className="BC-container">
       {BREED_PROPS.map((item) => {
-        const newItem = (item[0].toUpperCase() + item.slice(1)).replace("_", " ");
+        const newItem = (item[0].toUpperCase() + item.slice(1)).replace(
+          "_",
+          " ",
+        );
 
         return (
           <div className="BC-row">

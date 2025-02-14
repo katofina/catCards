@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CatCards.css";
+import "./CatCards.scss";
 import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
 import { API_KEY, BASE_URL } from "../constants/constant";
@@ -58,7 +58,7 @@ export default function CatCards() {
   return (
     <div className="CC-container">
       <div className="CC-title">
-        <Search/>
+        <Search />
       </div>
       {!!data.length && (
         <>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./AuthButton.css";
+import "./AuthButton.scss";
 
 interface Props {
   onClick: () => void;

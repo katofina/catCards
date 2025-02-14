@@ -1,7 +1,7 @@
 import React from "react";
 import { PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
-import "./Modal.css";
+import "./Modal.scss";
 
 interface Props extends PropsWithChildren {
   isOpen: boolean;
@@ -20,6 +20,6 @@ export default function Modal({ isOpen, onClose, children }: Props) {
         {children}
       </div>
     </div>,
-    document.getElementById("modal-root")
+    document.getElementById("modal-root"),
   );
 }

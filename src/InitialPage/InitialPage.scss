@@ -1,3 +1,8 @@
+@import "../constants/constants.scss";
+
+$paddings: 20vh;
+$heightIPMain: calc(100% - $paddings);
+
 .IP {
   text-align: center;
 }
@@ -9,19 +14,19 @@
   background-position: center;
   background-attachment: fixed;
   margin: 0;
-  height: calc(100% - 20vh); /*deduct padding*/
+  height: $heightIPMain;
   padding-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20vh;
+  padding-top: $paddings;
 }
 
 .IP-text {
-  font-size: 3rem;
+  font-size: $font-size-max;
   color: white;
-  font-weight: 700;
+  font-weight: $font-weight-large;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   margin-bottom: 20px;
 }
@@ -30,19 +35,19 @@
   margin-top: 20px;
   padding: 15px 30px;
   background-color: #ff7f50;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-larger;
   text-decoration: none;
   border-radius: 30px;
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
   color: black;
-}
 
-.IP-button:hover {
-  background-color: #ff6347;
-  transform: scale(1.05);
+  &:hover {
+    background-color: #ff6347;
+    transform: scale(1.05);
+  }
 }
 
 @media (max-width: 576px) {

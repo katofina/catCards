@@ -1,5 +1,5 @@
 import React from "react";
-import "./InitialPage.css";
+import "./InitialPage.scss";
 
 export default function InitialPage() {
   return (

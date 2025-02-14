@@ -1,18 +1,19 @@
+@import "../constants/constants.scss";
+
 .Profile-container {
   margin: 20px;
   padding: 30px;
-  background-color: #f9f9f9;
+  background-color: $white-color;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    color: $main-text-color;
+  }
 }
 
 .Profile-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  @include grid();
   gap: 20px;
   margin-top: 20px;
-}
-
-.Profile-container h1 {
-  color: #555;
 }

@@ -1,0 +1,92 @@
+@import "../constants/constants.scss";
+
+.CC-container {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.CC-title {
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid black;
+  position: relative;
+}
+
+.CC-cats {
+  @include grid();
+  gap: 20px;
+  padding: 40px 100px;
+}
+
+.СС-button {
+  background-color: $white-less-color;
+  color: $second-text-color;
+  font-size: $font-size-medium;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  margin: 10px;
+  font-weight: $font-weight-medium;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: $white-less-sec-color;
+    transform: translateY(-5px);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+  &:disabled {
+    background-color: $white-grey-color;
+    color: $disable-color;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.CC-extra {
+  @include flexCenter();
+  height: 100px;
+  text-align: center;
+  font-size: $font-size-larger;
+  font-weight: bold;
+  color: $main-text-color;
+  visibility: visible;
+
+  &.loading h1 {
+    animation: colorChange 2s infinite;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: $main-text-color;
+  }
+  50% {
+    color: $white-less-color;
+  }
+  100% {
+    color: $main-text-color;
+  }
+}
+
+.error {
+  color: $error-color;
+}
+
+@media (max-width: 576px) {
+  .CC-cats {
+    padding: 40px 50px;
+  }
+  .CC-extra {
+    font-size: 12px;
+  }
+}

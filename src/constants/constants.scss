@@ -1,0 +1,42 @@
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexBetween() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+$white-color: #f9f9f9;
+$white-less-color: #f8f4e3;
+$white-less-sec-color: #e0d9c8;
+$white-grey-color: #ccc;
+$main-text-color: #555;
+$second-text-color: #333;
+$disable-color: #999;
+$error-color: red;
+$focus-input-color: #9a9b9c;
+$main-border-color: #ddd;
+$main-list-color: #e0e0e0;
+$unknown-color: #7a5c5c;
+$known-color: #4a7c59;
+$blue-color: #3498db;
+
+$font-weight-medium: 500;
+$font-weight-larger: 600;
+$font-weight-large: 700;
+
+$font-size-medium: 1.2rem;
+$font-size-larger: 24px;
+$font-size-large: 28px;
+$font-size-max: 3rem;
+$font-size-min: 14px;
+$font-size-less: 16px;

@@ -1,10 +1,10 @@
+@import "../constants/constants.scss";
+
 .Header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #ddd;
+  @include flexBetween();
+  border-bottom: 2px solid $main-border-color;
   width: 100%;
-  background: linear-gradient(145deg, #e0d9c8, #d8d0c3);
+  background: linear-gradient(145deg, $white-less-sec-color, #d8d0c3);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   position: relative;
   height: 80px;
@@ -15,8 +15,8 @@
 .Header-title {
   padding: 10px;
   font-size: 28px;
-  font-weight: 700;
-  color: #333;
+  font-weight: $font-weight-large;
+  color: $second-text-color;
 }
 
 .Header-title-ref {
@@ -26,6 +26,6 @@
 
 @media (max-width: 576px) {
   .Header-title {
-    font-size: 14px;
+    font-size: $font-size-large;
   }
 }

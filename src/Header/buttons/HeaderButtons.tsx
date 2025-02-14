@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import Modal from "../../Modal/Modal";
-import "./HeaderButtons.css";
+import "./HeaderButtons.scss";
 import { useUserContext } from "../../Context/useUserContext";
 import { AuthButton } from "./AuthButton";
 import { MODAL_PROPS } from "../../constants/constant";
