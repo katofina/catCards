@@ -52,6 +52,8 @@ export default function Search() {
     fetchBreedArray();
   }, [searchString]);
 
+  const handleBlur = () => setBreedsArray(null);
+
   return (
     <div>
       <input
@@ -60,6 +62,8 @@ export default function Search() {
         placeholder="Search"
         value={searchString}
         onChange={handleInput}
+        onBlur={handleBlur}
+        onFocus={fetchBreedArray}
       />
       {error && <p>{error}</p>}
 
