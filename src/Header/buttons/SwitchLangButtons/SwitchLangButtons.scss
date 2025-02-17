@@ -1,15 +1,46 @@
 @import "../../../constants/constants.scss";
 
+.SLB-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: $font-size-medium;
+}
+
+.SLB-text {
+  font-weight: bold;
+  font-size: $font-size-larger;
+  color: $main-text-color;
+}
+
+.SLB-button-container {
+  display: flex;
+  gap: 10px;
+}
+
 .SLB-button {
-  border: none;
-  background: transparent;
+  border: 2px solid $main-border-color;
+  background: $main-list-color;
   cursor: pointer;
   font-size: $font-size-less;
-  margin: 0 10px;
-  padding: 5px 10px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  color: $second-text-color;
+  text-transform: uppercase;
+  font-weight: normal;
+
+  &:hover {
+    background-color: $white-grey-color;
+    border-color: $focus-input-color;
+  }
 
   &.active {
     font-weight: bold;
+    text-decoration: underline;
+    background-color: $focus-input-color;
+    color: $main-text-color;
+    border-color: black;
     text-decoration: underline;
   }
 }

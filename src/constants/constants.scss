@@ -15,6 +15,33 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+@mixin closeIco() {
+  position: absolute;
+  width: $close-ico-size;
+  height: $close-ico-size;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.3 ease,
+    opacity 0.2s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    filter: invert(40%) sepia(30%) saturate(500%);
+    opacity: 0.8;
+    transition:
+      opacity 0.3s ease,
+      transform 0.2s ease-in-out;
+  }
+
+  &:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
 $white-color: #f9f9f9;
 $white-less-color: #f8f4e3;
 $white-less-sec-color: #e0d9c8;

@@ -1,0 +1,58 @@
+@import "../../constants/constants.scss";
+
+.SM-container {
+  position: fixed;
+  top: 0;
+  right: -100px;
+  height: 100vh;
+  width: 250px;
+  background-color: $focus-input-color;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 9999;
+  padding: 20px;
+  transform: translateX(100%);
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.SM-close {
+  @include closeIco();
+  top: 10px;
+  left: 10px;
+}
+
+.SM-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    padding: 20px;
+    border-bottom: 1px solid $white-color;
+  }
+}
+
+.SM-buttons {
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: $font-size-medium;
+}
+
+@media (max-width: 567px) {
+  .SM-container {
+    width: 100%;
+  }
+
+  .SM-nav {
+    padding-top: 60px;
+  }
+}

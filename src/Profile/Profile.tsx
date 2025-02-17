@@ -6,6 +6,7 @@ import { CatInfo } from "../types/types";
 import "./Profile.scss";
 import OneCard from "../CatCards/OneCard/OneCard";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 
 export default function Profile() {
   const { user } = useUserContext();
@@ -14,6 +15,8 @@ export default function Profile() {
   const [err, setError] = useState(null);
 
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -36,7 +39,7 @@ export default function Profile() {
           setData(arr);
         } else setData([]);
       });
-    }
+    } else navigate("/");
   }, [user]);
 
   return (
