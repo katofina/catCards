@@ -15,3 +15,5 @@ export const MODAL_PROPS = {
     REGISTER: "REGISTER",
     BREED: "BREED"
 } as const;
+
+export const LANGS = ["en", "ru", "de"];
