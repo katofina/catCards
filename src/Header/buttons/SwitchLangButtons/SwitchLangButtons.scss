@@ -1,0 +1,15 @@
+@import "../../../constants/constants.scss";
+
+.SLB-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: $font-size-less;
+  margin: 0 10px;
+  padding: 5px 10px;
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

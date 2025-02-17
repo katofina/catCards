@@ -1,17 +1,19 @@
 import { get, onValue, ref } from "firebase/database";
 import { db } from "../firebase/firebase";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useUserContext } from "../Context/useUserContext";
 import { CatInfo } from "../types/types";
 import "./Profile.scss";
 import OneCard from "../CatCards/OneCard/OneCard";
+import { useTranslation } from "react-i18next";
 
 export default function Profile() {
   const { user } = useUserContext();
 
   const [data, setData] = useState([]);
   const [err, setError] = useState(null);
-  console.log(data);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) {
@@ -39,13 +41,13 @@ export default function Profile() {
 
   return (
     <div className="Profile-container">
-      <h1>Your saved photos of cats:</h1>
+      <h1>{t("savedPhotos")}</h1>
       <div className="Profile-gallery">
         {err && <p>{err}</p>}
         {data.length ? (
           data.map((item: CatInfo) => <OneCard key={item.id} data={item} />)
         ) : (
-          <p>No saved cats yet.</p>
+          <p>{t("noPhotos")}</p>
         )}
       </div>
     </div>

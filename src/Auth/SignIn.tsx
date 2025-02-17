@@ -4,6 +4,7 @@ import "./Sign.scss";
 import { useNavigate } from "react-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   email: string;
@@ -24,6 +25,7 @@ export default function SignIn({ close }: Prop) {
   const [fbError, setFbError] = useState(null);
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onSubmit = (data: FormData) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
@@ -36,30 +38,30 @@ export default function SignIn({ close }: Prop) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="Sign-form">
-      <h1>Sign In</h1>
+      <h1>{t("signIn")}</h1>
       <div className="Sign-group">
-        <label>Email</label>
+        <label>{t("email")}</label>
         <input
           type="email"
           {...register("email", {
-            required: "Email is required",
+            required: t("emailRequired"),
             pattern: {
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Invalid email format",
+              message: t("invalidEmail"),
             },
           })}
         />
         {errors.email && <p className="Sign-error">{errors.email.message}</p>}
       </div>
       <div className="Sign-group">
-        <label>Password</label>
+        <label>{t("password")}</label>
         <input
           type="password"
           {...register("password", {
-            required: "Password is required",
+            required: t("passwordRequired"),
             minLength: {
               value: 6,
-              message: "Password must be at least 6 characters long",
+              message: t("invalidPassword"),
             },
           })}
         />
@@ -68,11 +70,11 @@ export default function SignIn({ close }: Prop) {
         )}
       </div>
       <button type="submit" className="Sign-button">
-        Continue
+        {t("continue")}
       </button>
       {fbError && (
         <p className="Sign-error">
-          Please check the correctness of the entered data or register.
+          {t("loginError")}
         </p>
       )}
     </form>

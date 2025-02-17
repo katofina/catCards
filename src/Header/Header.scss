@@ -14,7 +14,7 @@
 
 .Header-title {
   padding: 10px;
-  font-size: 28px;
+  font-size: $font-size-large;
   font-weight: $font-weight-large;
   color: $second-text-color;
 }
@@ -26,6 +26,6 @@
 
 @media (max-width: 576px) {
   .Header-title {
-    font-size: $font-size-large;
+    font-size: $font-size-less;
   }
 }

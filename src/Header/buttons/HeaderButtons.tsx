@@ -4,14 +4,17 @@ import { auth } from "../../firebase/firebase";
 import Modal from "../../Modal/Modal";
 import "./HeaderButtons.scss";
 import { useUserContext } from "../../Context/useUserContext";
-import { AuthButton } from "./AuthButton";
+import { AuthButton } from "./AuthButton/AuthButton";
 import { MODAL_PROPS } from "../../constants/constant";
 import { ModalType } from "../../types/types";
 import { getModalContent } from "../../Modal/getModalContent";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 export default function HeaderButtons() {
   const { user, isLoading } = useUserContext();
+
+  const { t } = useTranslation();
 
   const [modalType, setModalType] = useState<ModalType | null>(null);
   const closeModal = () => setModalType(null);
@@ -28,18 +31,18 @@ export default function HeaderButtons() {
     <div className="HB-container">
       {user ? (
         <>
-          <AuthButton onClick={navigateToProfile} text="Profile" />
-          <AuthButton onClick={logOut} text="Sign Out" />
+          <AuthButton onClick={navigateToProfile} text={t("profile")} />
+          <AuthButton onClick={logOut} text={t("signOut")} />
         </>
       ) : (
         <>
           <AuthButton
             onClick={() => openModal(MODAL_PROPS.LOGIN)}
-            text="Sign In"
+            text={t("signIn")}
           />
           <AuthButton
             onClick={() => openModal(MODAL_PROPS.REGISTER)}
-            text="Sign Up"
+            text={t("signUp")}
           />
         </>
       )}

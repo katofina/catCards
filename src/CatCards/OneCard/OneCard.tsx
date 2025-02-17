@@ -8,6 +8,7 @@ import { MODAL_PROPS } from "../../constants/constant";
 import { getModalContent } from "../../Modal/getModalContent";
 import { get, ref, remove, set } from "firebase/database";
 import { db } from "../../firebase/firebase";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: CatInfo;
@@ -20,6 +21,8 @@ export default function OneCard({ data }: Props) {
   const [modalType, setModalType] = useState<ModalType | null>(null);
   const closeModal = () => setModalType(null);
   const openModal = (type: ModalType) => setModalType(type);
+
+  const { t } = useTranslation();
 
   const { user } = useUserContext();
   const userFavouriteRef = user
@@ -48,7 +51,7 @@ export default function OneCard({ data }: Props) {
   return (
     <div className="OC-card">
       <div style={{ left: 15 }} className="OC-ico-container">
-        <img src="/download.svg" className="OC-ico" alt="download" />
+        <img src="/download.svg" className="OC-ico" alt={t("download")} />
       </div>
       <div
         style={{ right: 15 }}
@@ -58,7 +61,7 @@ export default function OneCard({ data }: Props) {
         <img
           src="/save.svg"
           className={`OC-ico ${isFavorited ? "favorited" : ""}`}
-          alt="download"
+          alt={t("save")}
         />
       </div>
 
@@ -66,7 +69,7 @@ export default function OneCard({ data }: Props) {
 
       <div className="OC-info">
         <p className={hasCategory ? "OC-known" : "OC-unknown"}>
-          Category:{" "}
+          {t("category")}
           {hasCategory ? (
             <Link
               to={`/catcards/category_ids=${data.categories[0].id}`}
@@ -75,12 +78,12 @@ export default function OneCard({ data }: Props) {
               {data.categories[0].name}
             </Link>
           ) : (
-            "unknown"
+            t("unknown")
           )}
         </p>
 
         <p className={hasBreed ? "OC-known" : "OC-unknown"}>
-          Breed:{" "}
+          {t("breed")}
           {hasBreed ? (
             <>
               <Link
@@ -91,13 +94,13 @@ export default function OneCard({ data }: Props) {
               </Link>
               <img
                 src="/learn.svg"
-                alt="learn"
+                alt={t("learn")}
                 className="OC-learn"
                 onClick={() => openModal(MODAL_PROPS.BREED)}
               />
             </>
           ) : (
-            "unknown"
+            t("unknown")
           )}
         </p>
       </div>
@@ -105,7 +108,7 @@ export default function OneCard({ data }: Props) {
       <Modal isOpen={!!modalType} onClose={closeModal}>
         {modalType === MODAL_PROPS.LOGIN && (
           <p className="OC-errorLog">
-            To add to favorites, you need to log in.
+            {t("needLogIn")}
           </p>
         )}
         {modalType && getModalContent(modalType, closeModal, data.breeds[0])}

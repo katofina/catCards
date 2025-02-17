@@ -1,12 +1,15 @@
 import React from "react";
 import "./InitialPage.scss";
+import { useTranslation } from "react-i18next";
 
 export default function InitialPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="IP-main">
-      <h1 className="IP-text">Kittens that melt your heart</h1>
+      <h1 className="IP-text">{t('initialText')}</h1>
       <a href="/catcards" className="IP-button">
-        Go ahead
+        {t('goAhead')}
       </a>
     </div>
   );

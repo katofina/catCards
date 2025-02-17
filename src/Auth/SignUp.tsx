@@ -4,6 +4,7 @@ import "./Sign.scss";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   email: string;
@@ -22,6 +23,7 @@ export default function SignUp({ close }: Prop) {
   } = useForm<FormData>();
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [fbError, setFbError] = useState(null);
 
@@ -36,30 +38,30 @@ export default function SignUp({ close }: Prop) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="Sign-form">
-      <h1>Sign Up</h1>
+      <h1>{t("signUp")}</h1>
       <div className="Sign-group">
-        <label>Email</label>
+        <label>{t("email")}</label>
         <input
           type="email"
           {...register("email", {
-            required: "Email is required",
+            required: t("emailRequired"),
             pattern: {
               value: /^\S+@\S+$/i,
-              message: "Invalid email format",
+              message: t("invalidEmail"),
             },
           })}
         />
         {errors.email && <p className="error">{errors.email.message}</p>}
       </div>
       <div className="Sign-group">
-        <label>Password</label>
+        <label>{t("password")}</label>
         <input
           type="password"
           {...register("password", {
-            required: "Password is required",
+            required: t("passwordRequired"),
             minLength: {
               value: 6,
-              message: "Password must be at least 6 characters long",
+              message: t("invalidPassword"),
             },
           })}
         />
@@ -68,7 +70,7 @@ export default function SignUp({ close }: Prop) {
         )}
       </div>
       <button type="submit" className="Sign-button">
-        Continue
+        {t("continue")}
       </button>
       {fbError && <p className="Sign-error">{fbError}</p>}
     </form>

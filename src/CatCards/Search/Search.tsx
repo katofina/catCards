@@ -4,6 +4,7 @@ import { BreedInfo } from "../../types/types";
 import { useNavigate } from "react-router";
 import React from "react";
 import "./Search.scss";
+import { useTranslation } from "react-i18next";
 
 export default function Search() {
   const [searchString, setSearchString] = useState("");
@@ -11,6 +12,7 @@ export default function Search() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const findByBreed = (id: string) => {
     navigate(`/catcards/breed_ids=${id}`);
@@ -32,7 +34,7 @@ export default function Search() {
         headers: { "x-api-key": API_KEY },
       });
 
-      !response.ok && setError("Failed to fecth data.");
+      !response.ok && setError(t("failedFetch"));
 
       const data = await response.json();
 
@@ -41,7 +43,7 @@ export default function Search() {
       );
       setBreedsArray(filteredArray);
     } catch (err) {
-      setError("Failed to fecth data.");
+      setError(t("failedFetch"));
     }
   }
 
@@ -59,7 +61,7 @@ export default function Search() {
       <input
         className="Search-input"
         type="text"
-        placeholder="Search"
+        placeholder={t("search")}
         value={searchString}
         onChange={handleInput}
         onBlur={handleBlur}

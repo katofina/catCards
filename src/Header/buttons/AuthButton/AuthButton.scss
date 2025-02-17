@@ -1,4 +1,4 @@
-@import "../../constants/constants.scss";
+@import "../../../constants/constants.scss";
 
 .AuthButton {
   text-decoration: none;
@@ -10,7 +10,7 @@
   background-color: $white-less-color;
   display: inline-block;
   padding: 12px 24px;
-  font-size: 16px;
+  font-size: $font-size-less;
   text-align: center;
   cursor: pointer;
   transition:
@@ -31,7 +31,7 @@
 
 @media (max-width: 576px) {
   .AuthButton {
-    padding: 14px 12px;
-    font-size: 14px;
+    padding: 14px 10px;
+    font-size: $font-size-less;
   }
 }

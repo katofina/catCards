@@ -4,6 +4,7 @@ import OneCard from "./OneCard/OneCard";
 import { useParams } from "react-router";
 import { API_KEY, BASE_URL } from "../constants/constant";
 import Search from "./Search/Search";
+import { useTranslation } from "react-i18next";
 
 export default function CatCards() {
   const [data, setData] = useState([]);
@@ -12,6 +13,8 @@ export default function CatCards() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [url, setUrl] = useState(BASE_URL);
   const { id } = useParams();
+
+  const { t } = useTranslation();
 
   const loadData = async () => {
     setIsLoad(true);
@@ -23,7 +26,7 @@ export default function CatCards() {
         headers: { "x-api-key": API_KEY },
       });
 
-      !response.ok && setError(`Error of HTTP: ${response.status}`);
+      !response.ok && setError(t("httpError") + response.status);
 
       const newData = await response.json();
 
@@ -38,7 +41,7 @@ export default function CatCards() {
         return filteredData;
       });
     } catch (err) {
-      setError(`Error: ${err.message}`);
+      setError(t("error") + err.message);
     } finally {
       setIsLoad(false);
     }
@@ -72,13 +75,13 @@ export default function CatCards() {
             disabled={isDisabled}
             onClick={loadData}
           >
-            Load more
+            {t("loadMore")}
           </button>
         </>
       )}
       <div className={`CC-extra ${isLoad && "loading"}`}>
         {error && <h1 className="error">{error}</h1>}
-        {isLoad && !error && <h1>Loading...</h1>}
+        {isLoad && !error && <h1>{t("loading")}</h1>}
       </div>
     </div>
   );
